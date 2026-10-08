@@ -1,0 +1,20 @@
+// Cloudflare Workers config.
+// `npm run build` merges this into the generated .output/server/wrangler.json
+// (entry point and static assets are filled in automatically), then
+// `npx wrangler dev` / `npx wrangler deploy` pick up the generated config.
+//
+// The Worker name below must match the Worker name in the Cloudflare dashboard.
+{
+  "name": "autotecnix",
+  // Pinned so the runtime behaviour doesn't drift with each build date.
+  "compatibility_date": "2026-09-25",
+  "compatibility_flags": ["nodejs_compat"],
+  // Custom domains are easiest to attach in the dashboard
+  // (Worker → Settings → Domains & Routes). To manage them from code instead,
+  // once autotecnix.com is active on the same Cloudflare account, add
+  // (after a comma above):
+  // "routes": [
+  //   { "pattern": "autotecnix.com", "custom_domain": true },
+  //   { "pattern": "www.autotecnix.com", "custom_domain": true }
+  // ]
+}

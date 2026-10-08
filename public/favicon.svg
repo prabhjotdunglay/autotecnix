@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <style>
+    .h { fill: #0b0c0f; stroke: #0b0c0f; }
+    .x { fill: #d4ff3a; }
+    @media (prefers-color-scheme: dark) {
+      .h { fill: #d4ff3a; stroke: #d4ff3a; }
+      .x { fill: #0b0c0f; }
+    }
+  </style>
+  <path class="h" d="M32 4 56.25 18v28L32 60 7.75 46V18Z" stroke-width="4" stroke-linejoin="round"/>
+  <path class="x" d="M15 19h7.5L30 32l-7.5 13H15l7.5-13ZM49 19h-7.5L34 32l7.5 13H49l-7.5-13Z"/>
+</svg>

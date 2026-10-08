@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://autotecnix.com/sitemap.xml
