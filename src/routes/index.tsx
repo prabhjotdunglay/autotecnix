@@ -1,5 +1,14 @@
 import { Link, createFileRoute, useNavigate } from "@tanstack/react-router";
-import { ArrowRight, BadgeCheck, Car, Cpu, MessageCircle, Phone, ShieldCheck } from "lucide-react";
+import {
+  ArrowRight,
+  BadgeCheck,
+  Car,
+  Cpu,
+  MapPin,
+  MessageCircle,
+  Phone,
+  ShieldCheck,
+} from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { CtaBlock } from "@/components/sections/CtaBlock";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -9,9 +18,9 @@ import { FaqList } from "@/components/ui/FaqList";
 import { OpenStatus } from "@/components/ui/OpenStatus";
 import { PlateInput } from "@/components/ui/PlateInput";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { CarBlueprint } from "@/components/visuals/CarBlueprint";
 import { SITE, telLink, whatsappLink } from "@/config/site";
 import { GENERAL_FAQS } from "@/content/faqs";
+import { PHOTOS } from "@/content/photos";
 import { SERVICE_PLANS } from "@/content/pricing";
 import { SERVICES, getService, type Service } from "@/content/services";
 import { normaliseReg } from "@/lib/forms";
@@ -134,21 +143,26 @@ function Hero() {
           </div>
         </div>
 
-        {/* Dark "diagnostic screen" with the scanning car */}
+        {/* Workshop photo */}
         <div
-          aria-hidden="true"
-          className="inverse rise relative isolate overflow-hidden rounded-[1.5rem] bg-canvas p-5 md:p-7"
+          className="rise relative aspect-[4/3] overflow-hidden rounded-[1.5rem] bg-ink shadow-[0_30px_60px_-30px_rgba(11,12,15,0.5)]"
           style={delay(240)}
         >
-          <div className="pointer-events-none absolute inset-0 -z-10 bg-grid [mask-image:radial-gradient(ellipse_at_center,#000_20%,transparent_75%)]" />
-          <div className="flex items-center justify-between gap-4 font-mono text-[0.64rem] uppercase tracking-[0.14em] text-muted">
-            <span className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-volt" />
-              Diagnostic scan
-            </span>
-            <span>All makes</span>
-          </div>
-          <CarBlueprint scan className="mt-6 md:mt-8" />
+          <img
+            src={PHOTOS.hero.src}
+            srcSet={PHOTOS.hero.srcSet}
+            sizes="(min-width: 1024px) 560px, 100vw"
+            alt={PHOTOS.hero.alt}
+            fetchPriority="high"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/60 to-transparent"
+          />
+          <span className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-2 text-xs font-semibold text-ink shadow-sm md:bottom-5 md:left-5">
+            <MapPin className="h-3.5 w-3.5" aria-hidden="true" /> {SITE.place}
+          </span>
         </div>
       </div>
 

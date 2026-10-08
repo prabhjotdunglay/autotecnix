@@ -13,6 +13,7 @@ import { CtaBlock } from "@/components/sections/CtaBlock";
 import { PageHero } from "@/components/sections/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { SITE } from "@/config/site";
+import { PHOTOS } from "@/content/photos";
 import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
@@ -119,6 +120,20 @@ function AboutPage() {
           </Link>
         </div>
       </section>
+
+      <div className="shell pb-12 md:pb-16">
+        <div className="relative aspect-[16/9] overflow-hidden rounded-[1.25rem] bg-ink sm:aspect-[5/2] lg:aspect-[3/1]">
+          <img
+            src={PHOTOS.hero.src}
+            srcSet={PHOTOS.hero.srcSet}
+            sizes="(min-width: 1200px) 1136px, 100vw"
+            alt={PHOTOS.hero.alt}
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
+      </div>
 
       <section className="shell pb-4" aria-labelledby="kit-title">
         <SectionHeading

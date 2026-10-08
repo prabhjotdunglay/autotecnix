@@ -15,6 +15,7 @@ import { ServiceCard } from "@/components/sections/ServiceCard";
 import { FaqList } from "@/components/ui/FaqList";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { SITE, telLink, whatsappLink } from "@/config/site";
+import { CATEGORY_PHOTOS } from "@/content/photos";
 import { CATEGORIES, SERVICES, formatPrice, getService, type Service } from "@/content/services";
 import { breadcrumbSchema, faqSchema, jsonLd, seo, serviceSchema } from "@/lib/seo";
 
@@ -112,6 +113,7 @@ function ServiceDetail() {
   const { slug } = Route.useLoaderData();
   const service = getService(slug)!;
   const category = CATEGORIES.find((c) => c.id === service.category);
+  const photo = CATEGORY_PHOTOS[service.category];
   const related = SERVICES.filter((s) => s.category === service.category && s.slug !== slug)
     .concat(SERVICES.filter((s) => s.category !== service.category && s.slug !== slug))
     .slice(0, 3);
@@ -129,6 +131,18 @@ function ServiceDetail() {
         ]}
         aside={<BookCard service={service} />}
       />
+
+      <div className="shell pb-3">
+        <div className="relative aspect-[16/9] overflow-hidden rounded-[1.25rem] bg-ink sm:aspect-[5/2] lg:aspect-[3/1]">
+          <img
+            src={photo.src}
+            alt={photo.alt}
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
+      </div>
 
       <section
         className="shell grid grid-cols-1 gap-3 pb-12 md:pb-16 lg:grid-cols-2"
